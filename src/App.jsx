@@ -1,35 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// import { useState } from 'react'
+import TheHeader from "./components/TheHeader/TheHeader";
+import MapBlock from "./components/MapBlock/MapBlock";
+import MenuPanel from "./components/MenuPanel/MenuPanel";
+import TheFooter from "./components/TheFooter/TheFooter";
+import "@fontsource/fira-sans";
+import "@fontsource/pt-serif";
+import "@fontsource/eb-garamond";
+import "./App.scss";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <TheHeader />
+      <MenuPanel />
+      <MapBlock />
+      <TheFooter />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
