@@ -1,28 +1,21 @@
 import { useEffect, useRef } from "react";
 import L from "leaflet";
+import PlacesStore from "../../stores/PlacesStore";
+import { observer } from "mobx-react-lite";
 import "leaflet/dist/leaflet.css";
 import "./MapBlock.scss";
 
-const MapBlock = () => {
+const MapBlock = observer(() => {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const myPoints = [
-    {
-      name: "some place name",
-      latitude: 44.762566353036185,
-      longitude: 20.42839050292969,
-    },
-    {
-      name: "some other",
-      latitude: 44.76963939259086,
-      longitude: 20.46684265136719,
-    },
-    {
-      name: "some another",
-      latitude: 44.75646821003823,
-      longitude: 20.453453063964847,
-    },
-  ];
+
+  //Adding my points yo the map
+  if (Object.keys(PlacesStore.places).length > 0) {
+    PlacesStore.places.forEach((location) => {
+      const { name, latitude, longitude } = location;
+      L.marker([latitude, longitude]).addTo(map.current).bindPopup(name);
+    });
+  }
   useEffect(() => {
     if (mapContainer.current && !map.current) {
       //set default position if no geolocation
@@ -53,11 +46,7 @@ const MapBlock = () => {
           )
           .openPopup();
       });
-      //Adding my points yo the map
-      myPoints.forEach((location) => {
-        const { name, latitude, longitude } = location;
-        L.marker([latitude, longitude]).addTo(map.current).bindPopup(name);
-      });
+
       //sending request to get user location
       if ("geolocation" in navigator) {
         navigator.geolocation.getCurrentPosition(
@@ -77,6 +66,6 @@ const MapBlock = () => {
   }, []);
 
   return <main id="map" ref={mapContainer} className="map-block" />;
-};
+});
 
 export default MapBlock;

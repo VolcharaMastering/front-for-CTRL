@@ -14,11 +14,13 @@ import PopupState from "./stores/PopupState";
 import Popup from "./components/Popup/Popup";
 import { checkUserAuth } from "./utils/usersScripts/user";
 import { useEffect } from "react";
+import { getPlaces } from "./api/places";
 
 const App = observer(() => {
   const screenSize = useResize();
   
   useEffect(() => {
+    getPlaces();
     checkUserAuth();
   }, [])
   return (
