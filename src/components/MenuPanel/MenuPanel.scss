@@ -1,2 +1,28 @@
 @import "../../consts/block-mixins.scss";
 
+.menu-panel {
+    position: fixed;
+    width: 0;
+    height: 100%;
+    border-right: $borders-default;
+    top: 100px;
+    left: 0;
+    opacity: 0;
+    background-color: $light-background-color;
+    @include to-center_column();
+    overflow-y: scroll;
+    z-index: 1;
+    transition: $transition;
+    padding: 30px;
+    animation: showMenu 0.6s ease-out forwards;
+    @keyframes showMenu {
+      from {
+        width: 0;
+        opacity: 0;
+      }
+      to {
+        width: 400px;
+        opacity: 1;
+      }
+    }
+  }

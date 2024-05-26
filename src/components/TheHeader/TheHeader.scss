@@ -11,4 +11,12 @@
     .header__title{
         @include font-for-header;
     }
+    .header__user{
+        position: absolute;
+        right: 40px;
+        @include to-center_row($justify: space-between);
+        width: 200px;
+        height: 100%;
+
+    }
 }
