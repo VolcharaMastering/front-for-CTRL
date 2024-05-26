@@ -10,13 +10,21 @@ import "@fontsource/fira-sans";
 import "@fontsource/pt-serif";
 import "@fontsource/eb-garamond";
 import "./App.scss";
+import PopupState from "./stores/PopupState";
+import Popup from "./components/Popup/Popup";
 
 const App = observer(() => {
   const screenSize = useResize();
+  
   return (
     <>
+    {PopupState.popups.isOpened && (
+      <Popup
+        size={screenSize.trakResolutionValue}
+      />
+    )}
       <TheHeader />
-      {MenuState.isOpened && <MenuPanel screenSize={screenSize} />}
+      {MenuState.isOpened && <MenuPanel screenSize={screenSize.trakResolutionValue} />}
       <MapBlock />
       <TheFooter />
     </>

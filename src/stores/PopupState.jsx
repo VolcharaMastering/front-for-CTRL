@@ -13,6 +13,7 @@ class PopupState {
 
   setOpened = (data) => {
     this.popups = data;
+    console.log(this.popups.popupData, data);
   };
 }
 export default new PopupState();

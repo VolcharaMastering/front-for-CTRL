@@ -1,8 +1,22 @@
 import { useEffect } from "react";
 import PopupState from "../../stores/PopupState";
 import "./Popup.scss";
+import ButtonElement from "../../UI/ButtonElement/ButtonElement";
+import { login } from "../../api/users";
+import FormStore from "../../stores/FormStore";
+import { observer } from "mobx-react-lite";
+import { useState } from "react";
 
-function Popup({ popupType, popupContent, size }) {
+const Popup = observer(() => { 
+  const [popup, setPopup] = useState(PopupState.popups);
+  
+  useEffect(() => {
+    setPopup(PopupState.popups);
+  }, [PopupState.popups]);
+  const handleLogIn = () => {
+    login(FormStore.form);
+    FormStore.setClean();
+  }
   /////close functioality///////
   const { setClosed } = PopupState;
   const handleClosePopup = () => {
@@ -29,19 +43,18 @@ function Popup({ popupType, popupContent, size }) {
           aria-label="Close popup"
           onClick={handleClosePopup}
         />
-        {popupContent.title && <h2 className="popup__title">{popupContent.title}</h2>}
-        {popupType === "photo" ? (
-          <img
-            src={popupContent.photoLink}
-            alt={popupContent.description}
-            className={`popup__image ${size}`}
-          />
-        ) : (
-          <div className={`popup__content ${size}`}>no_content</div>
+        {popup.popupData.title && <h2 className="popup__title">{popup.popupData.title}</h2>}
+        {popup.popupType === "loIin" && (
+          
+          <ButtonElement name={popup.popupData.button} action={handleLogIn}/>
+        ) }
+        {popup.popupType === "Register" && (
+
+          <ButtonElement name={popup.popupData.button} action={handleLogIn}/>
         )}
       </section>
     </div>
   );
 }
-
+)
 export default Popup;
