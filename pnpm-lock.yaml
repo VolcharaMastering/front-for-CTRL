@@ -17,6 +17,9 @@ importers:
       '@fontsource/pt-serif':
         specifier: ^5.0.21
         version: 5.0.21
+      '@hookform/resolvers':
+        specifier: ^3.4.2
+        version: 3.4.2(react-hook-form@7.51.5(react@18.3.1))
       axios:
         specifier: ^1.7.2
         version: 1.7.2
@@ -368,6 +371,11 @@ packages:
 
   '@fontsource/pt-serif@5.0.21':
     resolution: {integrity: sha512-iYiluw2goKVdSdtskt+rNgYpEgmajKQyeTCPU8W4lj81jYAolfX8cnTjlY4d3tnZGcznhtYsjRrEya7+Baox9Q==}
+
+  '@hookform/resolvers@3.4.2':
+    resolution: {integrity: sha512-1m9uAVIO8wVf7VCDAGsuGA0t6Z3m6jVGAN50HkV9vYLl0yixKK/Z1lr01vaRvYCkIKGoy1noVRxMzQYb4y/j1Q==}
+    peerDependencies:
+      react-hook-form: ^7.0.0
 
   '@humanwhocodes/config-array@0.11.14':
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
@@ -2000,6 +2008,10 @@ snapshots:
   '@fontsource/fira-sans@5.0.20': {}
 
   '@fontsource/pt-serif@5.0.21': {}
+
+  '@hookform/resolvers@3.4.2(react-hook-form@7.51.5(react@18.3.1))':
+    dependencies:
+      react-hook-form: 7.51.5(react@18.3.1)
 
   '@humanwhocodes/config-array@0.11.14':
     dependencies:

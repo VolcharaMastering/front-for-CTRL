@@ -73,6 +73,21 @@
     $font-style: $got-style
   );
 }
+@mixin warning-text(
+  $got-size: 10px,
+  $got-color: red,
+  $got-font: $main-font,
+  $got-weight: 300,
+  $got-style: italic
+) {
+  @include font-style(
+    $font-size: $got-size,
+    $color: $got-color,
+    $font-family: $got-font,
+    $font-weight: $got-weight,
+    $font-style: $got-style
+  );
+}
 
 @mixin text-link-hover(
   $opacity: 90%,

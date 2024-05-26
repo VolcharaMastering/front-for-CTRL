@@ -1,27 +1,30 @@
+import { observer } from "mobx-react-lite";
 import ButtonElement from "../../UI/ButtonElement/ButtonElement";
 import HideButton from "../../UI/HideButton/HideButton";
 import UserState from "../../stores/UserState";
 import PopupState from "../../stores/PopupState";
+import { logOut } from "../../utils/usersScripts/user";
 import "./TheHeader.scss";
 
-function TheHeader() {
+const TheHeader = observer(() => {
   const handleRegister = () => {
-    PopupState.setOpened({isOpened: true,
-      popupType: "Register",
+    PopupState.setOpened({
+      isOpened: true,
+      popupType: "register",
       popupData: {
         title: "Register",
         button: "Register and Enter",
       },
       size: "middle",
     });
-  }
+  };
   const handleClick = () => {
     if (UserState.userData.logedIn) {
-      UserState.setLogOut();
+      logOut();
     } else {
       PopupState.setOpened({
         isOpened: true,
-        popupType: "logIn",
+        popupType: "login",
         popupData: {
           title: "Login",
           button: "Enter",
@@ -48,5 +51,5 @@ function TheHeader() {
       </div>
     </header>
   );
-}
+});
 export default TheHeader;

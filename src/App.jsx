@@ -12,10 +12,15 @@ import "@fontsource/eb-garamond";
 import "./App.scss";
 import PopupState from "./stores/PopupState";
 import Popup from "./components/Popup/Popup";
+import { checkUserAuth } from "./utils/usersScripts/user";
+import { useEffect } from "react";
 
 const App = observer(() => {
   const screenSize = useResize();
   
+  useEffect(() => {
+    checkUserAuth();
+  }, [])
   return (
     <>
     {PopupState.popups.isOpened && (

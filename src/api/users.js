@@ -1,4 +1,6 @@
 import api from "../plugins/axios";
+import ApiLogsStore from "../stores/ApiLogsStore";
+import PopupState from "../stores/PopupState";
 import UserState from "../stores/UserState";
 import Cookies from 'js-cookie';
 
@@ -11,21 +13,24 @@ const login = async (data) => {
     const userData = await api.post("login", data);
     UserState.setLogIn(userData.data);
     setCookie(userData.data);
+    ApiLogsStore.setSuccess("You are logged in");
+    PopupState.setClosed();
     return userData.data;
   } catch (error) {
     console.log(error);
+    ApiLogsStore.setError(error.response.data.message);
     throw error;
   }
 };
 
-const register = async (data) => {
+const registerUser = async (data) => {
   try {
     const userData = await api.post("register", data);
-    UserState.setLogIn(userData.data);
-    setCookie(userData.data);
+    ApiLogsStore.setSuccess("You Registered successfully");
     return userData.data;
   } catch (error) {
     console.log(error);
+    ApiLogsStore.setError(error.response.data.message);
     throw error;
   }
 };
@@ -45,4 +50,4 @@ const getMe = async (token) => {
   }
 };
 
-export { login, register, getMe };
+export { login, registerUser, getMe };
