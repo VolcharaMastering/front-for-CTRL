@@ -1,0 +1,24 @@
+@import "../../consts/block-mixins.scss";
+
+.hide-button {
+  @include button(
+    $border: none,
+    $width: 45px,
+    $height: 45px,
+    $background: $light-background-color
+  );
+  background-image: url(../../assets/show-menu.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 25px;
+  left: 40px;
+  z-index: 2;
+  &.true{
+    background-image: url(../../assets/hide-menu.svg);
+  }
+}
+.hide-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

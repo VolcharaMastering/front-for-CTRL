@@ -1,0 +1,24 @@
+$input-font: "Fira Sans";
+$main-font: "PT Serif";
+$header-font: "EB Garamond";
+
+$light-background-color: #f9faec;
+$dark-background-color: #5c4b51;
+
+$light-text-color: #fff;
+$dark-text-color: #000;
+
+$hover-color: #e4e4e0;
+$border-color: #979797;
+
+$main-font-family: $main-font, Arial, sans-serif;
+$input-font-size: 15px;
+$main-font-size: 20px;
+
+$body-width: 90vw;
+$borders-default: 1px solid $border-color;
+
+$transition: 0.3s ease-in;
+$transition-value:
+  opacity 0.2s linear,
+  text-shadow 0.3s linear;
