@@ -5,6 +5,7 @@ import MenuTabs from "../../UI/MenuTabs/MenuTabs";
 import PlacesStore from "../../stores/PlacesStore";
 import MenuCheckedState from "../../stores/MenuCheckedState";
 import "./MenuForm.scss";
+import SearchBar from "../../UI/SearchBar/SearchBar";
 
 const MenuForm = observer(() => {
   
@@ -23,6 +24,7 @@ const MenuForm = observer(() => {
   return UserState.userData.logedIn ? (
     <menu className="menu-form">
       <MenuTabs />
+      <SearchBar />
       {MenuCheckedState.checked === "places" && (
         <ul className="menu-form__places-list">
           {PlacesStore.places.length > 0 &&

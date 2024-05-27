@@ -19,7 +19,7 @@ import {
 import PlacesStore from "../../stores/PlacesStore.jsx";
 import { observer } from "mobx-react-lite";
 import "./MapBlock.scss";
-import MapPopup from "../MapPopup/MapPopup.jsx";
+import AddPopup from "../AddPopup/AddPopup.jsx";
 import { useState } from "react";
 import tileLayer from "../../utils/titleLayer.js";
 import "leaflet/dist/leaflet.css";
@@ -69,7 +69,7 @@ const MapBlock = observer(() => {
         {markerPosition && (
           <Marker position={markerPosition} ref={markerRef}>
             <Popup>
-              <MapPopup lat={markerPosition[0]} lng={markerPosition[1]} />
+              <AddPopup lat={markerPosition[0]} lng={markerPosition[1]} />
             </Popup>
           </Marker>
         )}

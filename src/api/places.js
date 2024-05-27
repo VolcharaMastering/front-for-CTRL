@@ -47,4 +47,15 @@ const getPlaces = async () => {
     }
   };
 
-  export { getPlaces, addPlace, deletePlace };
+  const findPlaces = async (searchString) => {
+    try {
+      const places = await api.get(`places/search?query=${searchString}`);
+      PlacesStore.setPlaces(places.data);
+      return places.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+
+  export { getPlaces, addPlace, deletePlace, findPlaces };
