@@ -1,0 +1,22 @@
+@import "../../consts/block-mixins.scss";
+
+.map-popup {
+  @include to-center_column($align: flex-start);
+  padding: 1%;
+  width: 200px;
+  .map-popup__input {
+    height: 35px;
+    @include input-text();
+    margin: 0;
+  }
+  .map-popup__label {
+    @include input-text();
+    margin: 0;
+  }
+  .map-popup__auth-message {
+    @include warning-text();
+  }
+  .map-popup__add-button{
+    align-self: center;
+  }
+}
