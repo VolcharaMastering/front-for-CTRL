@@ -20,17 +20,31 @@ const getPlaces = async () => {
 
   const addPlace = async (placeData) => {
     try {
-      const place = await api.post("places/", placeData, {
+      await api.post("places/", placeData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
-      PlacesStore.addPlaceToForm(place.data);
-      return place.data;
+      getPlaces();
+      return;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  };
+  const deletePlace = async (placeId) => {
+    try {
+      await api.delete(`places/${placeId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      getPlaces();
+      return;
     } catch (error) {
       console.log(error);
       throw error;
     }
   };
 
-  export { getPlaces, addPlace };
+  export { getPlaces, addPlace, deletePlace };

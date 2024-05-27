@@ -23,6 +23,7 @@ import MapPopup from "../MapPopup/MapPopup.jsx";
 import { useState } from "react";
 import tileLayer from "../../utils/titleLayer.js";
 import "leaflet/dist/leaflet.css";
+import DeletePopup from "../DeletePopup/DeletePopup.jsx";
 
 const MapBlock = observer(() => {
   const center = [55.75017078646975, 37.60995090007783];
@@ -37,8 +38,8 @@ const MapBlock = observer(() => {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
-            const { latitude, longitude } = position.coords;
-            map.flyTo([latitude, longitude], 13);
+            const { lat, lng } = position.coords;
+            map.flyTo([lat, lng], 13);
           },
           (error) => {
             console.error("Error getting location:", error);
@@ -61,7 +62,7 @@ const MapBlock = observer(() => {
   }, [markerPosition]);
   return (
     <main className="map-block">
-      <MapContainer center={center} zoom={13} scrollWheelZoom={true}>
+      <MapContainer center={center} zoom={13} scrollWheelZoom={true} ZoomControl={false}>
         <ZoomControl position={"topright"} />
         <TileLayer {...tileLayer} />
         <MapClickHandler />
@@ -72,6 +73,22 @@ const MapBlock = observer(() => {
             </Popup>
           </Marker>
         )}
+        {PlacesStore.places.length > 0 &&
+          PlacesStore.places.map((place) => {
+            const { _id: placeId, placeName, lat, lng } = place;
+            if (lat && lng) {
+            return (
+              <Marker
+                key={placeId}
+                position={[lat, lng]}
+              >
+                <Popup>
+                  <DeletePopup placeId={placeId} placeName={placeName} lat={lat} lng={lng} />
+                </Popup>
+              </Marker>
+            );
+          }
+          })}
       </MapContainer>
     </main>
   );

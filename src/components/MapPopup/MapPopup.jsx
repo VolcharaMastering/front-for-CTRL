@@ -11,8 +11,8 @@ const MapPopup = observer(({ lat, lng }) => {
     console.log("placeName", placeName);
     addPlace({
       placeName: placeName,
-      latitude: lat,
-      longitude: lng,
+      lat: lat,
+      lng: lng,
     });
   };
   return UserState.userData.logedIn ? (
@@ -27,16 +27,16 @@ const MapPopup = observer(({ lat, lng }) => {
         required
         type="text"
       />
-      <p className="map-popup__label">Lattitude {lat}</p>
-      <p className="map-popup__label">Longitude {lng}</p>
+      <p className="map-popup__label">lat {lat}</p>
+      <p className="map-popup__label">lng {lng}</p>
       <div className="map-popup__add-button">
       <ButtonElement name="Add place" action={handleAdd} size="small" />
       </div>
     </div>
   ) : (
     <div className="map-popup">
-      <p className="map-popup__label">Lattitude {lat}</p>
-      <p className="map-popup__label">Longitude {lng}</p>
+      <p className="map-popup__label">lat {lat}</p>
+      <p className="map-popup__label">lng {lng}</p>
       <p className="map-popup__auth-message">Log in and add place</p>
     </div>
   );

@@ -1,15 +1,13 @@
 import { observer } from "mobx-react-lite";
 import UserState from "../../stores/UserState";
-import "./MenuForm.scss";
 import PopupState from "../../stores/PopupState";
 import MenuTabs from "../../UI/MenuTabs/MenuTabs";
 import PlacesStore from "../../stores/PlacesStore";
-import { useEffect } from "react";
 import MenuCheckedState from "../../stores/MenuCheckedState";
-import { useState } from "react";
+import "./MenuForm.scss";
 
 const MenuForm = observer(() => {
-    const [places, setPlaces] = useState(PlacesStore.places);
+  
     
   const handleOpenPopup = () => {
     PopupState.setOpened({
@@ -22,15 +20,14 @@ const MenuForm = observer(() => {
       size: "middle",
     });
   };
-  useEffect(() => {
-    setPlaces(PlacesStore.places);
-  }, [PlacesStore.places])
   return UserState.userData.logedIn ? (
-    <>
+    <menu className="menu-form">
       <MenuTabs />
       {MenuCheckedState.checked === "places" && (
         <ul className="menu-form__places-list">
-          {places.map((place) => (
+          {PlacesStore.places.length > 0 &&
+             PlacesStore.places.map((place) => (
+              (place.placeName && place.lat && place.lng) &&
             <li className="menu-form__places-item" key={place.id}>
               {place.placeName}
             </li>
@@ -38,7 +35,7 @@ const MenuForm = observer(() => {
         </ul>
       )}
       <form></form>
-    </>
+    </menu>
   ) : (
     <>
       <h2 className="subtitle"> You need to </h2>
