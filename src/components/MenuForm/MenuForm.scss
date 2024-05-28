@@ -7,7 +7,6 @@
     height: calc(100vh - 250px);
   overflow-y: scroll;
     width: 100%;
-    // @include to-center_column();
     @include list-without-dots();
     .menu-form__places-item {
       width: 100%;
@@ -15,7 +14,10 @@
       padding: 5px 4%;
     }
     .menu-form__places-item__text {
+      max-width: 250px;
+      height: 32px;
       @include normal-text();
+      overflow-x: scroll;
     }
   }
   .menu-form__details{

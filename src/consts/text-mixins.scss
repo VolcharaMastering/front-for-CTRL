@@ -27,6 +27,12 @@
     $font-family: $got-font,
     $font-weight: $got-weight
   );
+  &.tablet{
+    font-size: 50px;
+  }
+  &.mobile{
+    font-size: 35px;
+  }
 }
 @mixin input-text(
   $got-size: $input-font-size,

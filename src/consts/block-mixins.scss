@@ -29,6 +29,7 @@
   background-color: $background;
   transition: $transition;
 }
+
 @mixin gridAutoFill(
   $justify: center,
   $align: center,

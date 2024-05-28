@@ -16,6 +16,16 @@
       width: 90px;
       height: 30px;
     }
+    &.tablet{
+      font-size: 15px;
+      width: 100px;
+      height: 30px;
+    }
+    &.mobile{
+      font-size: 15px;
+      width: 80px;
+      height: 30px;
+    }
   }
 
   .button:hover {

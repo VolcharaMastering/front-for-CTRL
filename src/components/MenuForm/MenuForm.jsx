@@ -28,7 +28,7 @@ const MenuForm = observer(() => {
       size: "middle",
     });
   };
-  return UserState.userData.logedIn ? (
+  return (
     <menu className="menu-form">
       <MenuTabs />
       <SearchBar />
@@ -62,13 +62,6 @@ const MenuForm = observer(() => {
         </section>
       )}
     </menu>
-  ) : (
-    <>
-      <h2 className="subtitle"> You need to </h2>
-      <button className="subtitle" type="button" onClick={handleOpenPopup}>
-        Log In
-      </button>
-    </>
-  );
+  )
 });
 export default MenuForm;

@@ -17,16 +17,17 @@ import DeletePopup from "../DeletePopup/DeletePopup.jsx";
 import ChecketPlaceState from "../../stores/ChecketPlaceState.jsx";
 import "leaflet/dist/leaflet.css";
 import "./MapBlock.scss";
-import markerImage from "../../assets/centralMarker.png";
+import markerImage from "../../assets/centralMarker.svg";
 
 const chosenIcon = L.icon({
   iconUrl: markerImage,
-  iconSize: [32, 32],
-  iconAnchor: [16, 32],
+  iconSize: [40, 40],
+  iconAnchor: [20, 40],
   popupAnchor: [0, -32],
 });
 const MapBlock = observer(() => {
   const [markerPosition, setMarkerPosition] = useState(null);
+  const [autoPositioned, setAutoPositioned] = useState(false);
   const markerRef = useRef(null);
 
   const MapClickHandler = () => {
@@ -34,23 +35,27 @@ const MapBlock = observer(() => {
     const map = useMap();
 
     useEffect(() => {
-      if (navigator.geolocation) {
+      if (!autoPositioned && navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
             map.flyTo([latitude, longitude], 13);
+            setAutoPositioned(true);
           },
           (error) => {
             console.error("Error getting location:", error);
+            setAutoPositioned(true);
           }
         );
       }
-    }, [map]);
+    }, [map, autoPositioned]);
+
     useMapEvents({
       click: (e) => {
         setMarkerPosition([e.latlng.lat, e.latlng.lng]);
       },
     });
+
     return null;
   };
 
