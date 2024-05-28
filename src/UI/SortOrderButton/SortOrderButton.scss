@@ -1,0 +1,19 @@
+@import "../../consts/block-mixins.scss";
+
+.sort-button {
+    background-image: url(../../assets/orderUp.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 45px;
+    height: 45px;
+    border: none;
+    background-color: transparent;
+    transition: $transition;
+    &.desc {
+      background-image: url(../../assets/orderDown.svg);
+    }
+}
+.sort-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

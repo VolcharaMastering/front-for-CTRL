@@ -6,6 +6,7 @@ import ButtonElement from "../../UI/ButtonElement/ButtonElement";
 import { deleteReview } from "../../api/reviews";
 import ChecketPlaceState from "../../stores/ChecketPlaceState";
 import PopupState from "../../stores/PopupState";
+import SortingPannel from "../SortingPannel/SortingPannel";
 
 const ReviewsList = observer(() => {
   const placeId = ChecketPlaceState.checked._id;
@@ -29,6 +30,7 @@ const ReviewsList = observer(() => {
     }
   return (
     <ul className="reviews-list">
+      <SortingPannel />
       {ReviewsStore.reviews.length > 0 ? (
         ReviewsStore.reviews.map(
           (review) =>

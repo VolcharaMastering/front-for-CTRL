@@ -42,13 +42,13 @@ const AuthForm = observer(({ formType }) => {
           {...register("email")}
           id="Popup-email"
           name="email"
-          className={`auth-form__input ${errors.username ? "error" : ""}`}
+          className={`auth-form__input ${errors.email ? "error" : ""}`}
           type="text"
           placeholder="Your email"
         />
         <span
           className={`auth-form__valid-message 
-                        ${errors.username ? "auth-form__valid-message_active" : ""}`}
+                        ${errors.email ? "auth-form__valid-message_active" : ""}`}
         >
           {errors?.email && errors?.email?.message}
         </span>
