@@ -1,18 +1,21 @@
 import { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { findPlaces } from "../../api/places";
-import "./SearchBar.scss";
 import MenuCheckedState from "../../stores/MenuCheckedState";
+import { findReviews } from "../../api/reviews";
+import "./SearchBar.scss";
+import ChecketPlaceState from "../../stores/ChecketPlaceState";
 
 const SearchBar = observer(() => {
   const [searchString, setSearchString] = useState("");
+  const placeId = ChecketPlaceState.checked._id;
 
   const handleSearch = () => {
-    // if (searchString.length > 0) {
       if (MenuCheckedState.checked === "places") {
         findPlaces(searchString);
+      } else {
+        findReviews(placeId, searchString);
       }
-    // }
   };
   useEffect(() => {
     handleSearch();

@@ -11,7 +11,7 @@ class ReviewsStore {
     this.reviews = [];
   };
 
-  setPlaces = (data) => {
+  setReviews = (data) => {
     this.reviews = data;
   };  
 }

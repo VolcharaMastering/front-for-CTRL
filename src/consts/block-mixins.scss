@@ -46,7 +46,6 @@
 
 // ------special block decoration
 @mixin list-without-dots {
-  @include to-center_row();
   list-style-type: none;
 }
 @mixin link-list($color: $dark-text-color) {

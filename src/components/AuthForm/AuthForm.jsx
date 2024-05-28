@@ -1,20 +1,19 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import "./AuthForm.scss";
-import authValidation from "../../validations/authValidation";
+import { observer } from "mobx-react-lite";
 import { yupResolver } from "@hookform/resolvers/yup";
+import authValidation from "../../validations/authValidation";
 import Eye from "../../UI/Eye/Eye";
 import EyeState from "../../stores/EyeState";
 import { login, registerUser } from "../../api/users";
 import ButtonElement from "../../UI/ButtonElement/ButtonElement";
-import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 import ApiLogsStore from "../../stores/ApiLogsStore";
+import "./AuthForm.scss";
 
 const AuthForm = observer(({ formType }) => {
   const handleAuth = (formData) => {
     ApiLogsStore.setClean();
     if (formType === "login") {
-      console.log(formData);
       login(formData);
     } else if (formType === "register") {
       const formDataCopy = { ...formData };
