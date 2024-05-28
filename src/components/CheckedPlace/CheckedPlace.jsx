@@ -1,19 +1,33 @@
-import { useState } from "react";
 import { observer } from "mobx-react-lite";
-import { Rating } from "@smastrom/react-rating";
 import ChecketPlaceState from "../../stores/ChecketPlaceState";
 import ButtonElement from "../../UI/ButtonElement/ButtonElement";
 import { deletePlace } from "../../api/places";
-import "@smastrom/react-rating/style.css";
-import "./CheckedPlace.scss";
 import UserState from "../../stores/UserState";
+import { getReviews } from "../../api/reviews";
+import { useEffect } from "react";
+import "./CheckedPlace.scss";
+import PopupState from "../../stores/PopupState";
 
 const CheckedPlace = observer(() => {
-  const [rating, setRating] = useState(3);
-  const handleAddReview = () => {};
-  const handleDeletePlace = () => {
-    deletePlace(ChecketPlaceState.checked._id);
+  const placeId = ChecketPlaceState.checked._id;
+  const handleAddReview = () => {
+    PopupState.setOpened({
+      isOpened: true,
+      popupType: "addReview",
+      popupData: {
+        title: "Add review",
+        placeId: placeId,
+      },
+      size: "middle",
+    });
   };
+  const handleDeletePlace = () => {
+    deletePlace(placeId, ChecketPlaceState.checked._id);
+  };
+
+  useEffect(() => {
+    getReviews(ChecketPlaceState.checked._id);
+  }, [ChecketPlaceState.checked._id]);
   return (
     <section className="checked-place">
       <h2 className="subtitle">Chosen place:</h2>
@@ -33,11 +47,6 @@ const CheckedPlace = observer(() => {
             name="Add review"
             size="small"
             action={handleAddReview}
-          />
-          <Rating
-            style={{ maxWidth: 100 }}
-            value={rating}
-            onChange={setRating}
           />
           <ButtonElement
             name="Delete place"

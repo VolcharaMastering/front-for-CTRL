@@ -1,14 +1,13 @@
 import { useState } from "react";
+import { observer } from "mobx-react-lite";
 import { addPlace } from "../../api/places";
-import "./AddPopup.scss";
 import ButtonElement from "../../UI/ButtonElement/ButtonElement";
 import UserState from "../../stores/UserState";
-import { observer } from "mobx-react-lite";
+import "./AddPopup.scss";
 
 const AddPopup = observer(({ lat, lng }) => {
   const [placeName, setPlaceName] = useState("");
   const handleAdd = () => {
-    console.log("placeName", placeName);
     addPlace({
       placeName: placeName,
       lat: lat,
@@ -30,7 +29,7 @@ const AddPopup = observer(({ lat, lng }) => {
       <p className="add-popup__label">lat {lat}</p>
       <p className="add-popup__label">lng {lng}</p>
       <div className="add-popup__add-button">
-      <ButtonElement name="Add place" action={handleAdd} size="small" />
+        <ButtonElement name="Add place" action={handleAdd} size="small" />
       </div>
     </div>
   ) : (

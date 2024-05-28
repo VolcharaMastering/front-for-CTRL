@@ -1,0 +1,26 @@
+@import "../../consts/block-mixins.scss";
+
+.reviews-list {
+  width: 100%;
+  @include list-without-dots();
+  @include to-center_column();
+  padding: 5px;
+  .reviews-list__item {
+    width: 100%;
+    @include to-center_column($align: flex-start);
+    border-bottom: $borders-default;
+    .reviews-list__item-label {
+      @include input-text();
+      margin-top: 10px;
+    }
+    .reviews-list__item-text {
+      @include normal-text();
+      margin: 5px 0;
+    }
+  }
+  .reviews-list__item-rating {
+    width: 100%;
+    @include to-center_row($justify: space-between);
+    margin-top: 15px;
+  }
+}

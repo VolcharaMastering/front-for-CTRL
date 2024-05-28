@@ -1,13 +1,11 @@
 import { observer } from "mobx-react-lite";
-import "./DeletePopup.scss";
 import { deletePlace } from "../../api/places";
 import ButtonElement from "../../UI/ButtonElement/ButtonElement";
 import UserState from "../../stores/UserState";
+import "./DeletePopup.scss";
 
 const DeletePopup = observer(({ placeId, placeName, lat, lng }) => {
-  console.log("placeId", placeId, placeName, lat, lng);
   const handleDelete = () => {
-    console.log("placeid", placeId);
     deletePlace(placeId);
   };
   return UserState.userData.logedIn ? (
