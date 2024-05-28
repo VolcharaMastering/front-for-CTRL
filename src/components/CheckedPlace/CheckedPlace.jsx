@@ -49,7 +49,7 @@ const CheckedPlace = observer(() => {
             action={handleAddReview}
           />
           <ButtonElement
-            name="Delete place"
+            name="Del place"
             size="small"
             action={handleDeletePlace}
           />

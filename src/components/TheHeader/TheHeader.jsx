@@ -4,9 +4,11 @@ import HideButton from "../../UI/HideButton/HideButton";
 import UserState from "../../stores/UserState";
 import PopupState from "../../stores/PopupState";
 import { logOut } from "../../utils/usersScripts/user";
+import { useResize } from "../../utils/hooks/useResize";
 import "./TheHeader.scss";
 
 const TheHeader = observer(() => {
+  const screenSize = useResize();
   const handleRegister = () => {
     PopupState.setOpened({
       isOpened: true,
@@ -36,8 +38,8 @@ const TheHeader = observer(() => {
   return (
     <header className="header">
       <HideButton />
-      <h1 className="header__title">Test Map</h1>
-      <div className="header__user">
+      <h1 className={`header__title ${screenSize.trakResolutionValue}`}>Test Map</h1>
+      <div className={`header__user  ${screenSize.trakResolutionValue}`}>
         {UserState.userData.logedIn ? (
           <div className={`header__avatar ${UserState.userData.logedIn}`} />
         ) : (

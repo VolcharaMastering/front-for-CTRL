@@ -1,6 +1,8 @@
+import { useResize } from "../../utils/hooks/useResize";
 import "./ButtonElement.scss";
 
 function ButtonElement({ name, action, data, size }) {
+  const screenSize = useResize();
     const handleClick = () => {
       if(data){
         action(data);
@@ -9,7 +11,7 @@ function ButtonElement({ name, action, data, size }) {
       }
     };
     return (
-      <button className={`button ${size}`} onClick={handleClick} type="button">
+      <button className={`button ${size} ${screenSize.trakResolutionValue}`} onClick={handleClick} type="button">
         {name}
       </button>
     );

@@ -1,10 +1,12 @@
+import { useResize } from "../../utils/hooks/useResize";
 import MenuForm from "../MenuForm/MenuForm";
 import "./MenuPanel.scss";
 
-function MenuPanel({screenSize}) {
+function MenuPanel() {
+    const screenSize = useResize();
 
     return (
-        <section className={`menu-panel ${screenSize}`}>
+        <section className={`menu-panel ${screenSize.trakResolutionValue}`}>
             <MenuForm />
         </section>
     )
