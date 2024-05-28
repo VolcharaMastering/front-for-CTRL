@@ -13,7 +13,7 @@ class UserState {
 
   setLogIn = (data) => {
     this.userData = { ...data, logedIn: true };
-    console.log(this.userData, data);
+    console.log(this.userData.logedIn, data);
   };
 }
 export default new UserState();

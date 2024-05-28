@@ -1,0 +1,19 @@
+@import "../../consts/block-mixins.scss";
+
+.del-popup {
+  @include to-center_column();
+  padding: 1%;
+  width: 200px;
+  .del-popup__input {
+    height: 35px;
+    @include input-text();
+    margin: 0;
+  }
+  .del-popup__label {
+    @include input-text();
+    margin: 0;
+  }
+  .del-popup__auth-message {
+    @include warning-text();
+  }
+}

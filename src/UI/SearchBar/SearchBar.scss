@@ -1,0 +1,18 @@
+@import "../../consts/block-mixins.scss";
+
+.search-bar {
+    width: 100%;
+    height: 80px;
+    padding: 2%;
+    .search-bar__label {
+        @include subtitle-text();
+    }
+    .search-bar__input {
+        width: 100%;
+        height: 35px;
+        border-radius: 10px;
+        background-color: $form-color;
+        @include input-text();
+        padding-left: 15px;
+    }
+}

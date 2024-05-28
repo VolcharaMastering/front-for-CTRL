@@ -7,8 +7,8 @@
 
   @include to-center_column();
   border-radius: 10px;
-  max-width: 80vw;
-  max-height: 80vh;
+  max-width: 400px;
+  max-height: 400px;
 
   object-fit: cover;
   z-index: 4;
@@ -38,8 +38,6 @@
       max-width: 100vw;
       max-height: 100vh;
     }
-  }
-  .popup__content {
   }
 }
 .popup__shadow {

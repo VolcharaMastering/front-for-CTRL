@@ -9,11 +9,9 @@
     left: 0;
     opacity: 0;
     background-color: $light-background-color;
-    @include to-center_column();
-    overflow-y: scroll;
+    @include to-center_column($justify: flex-start);
     z-index: 1;
     transition: $transition;
-    padding: 30px;
     animation: showMenu 0.6s ease-out forwards;
     @keyframes showMenu {
       from {
