@@ -77,7 +77,7 @@ const updateReviews = async (placeId, reviewId, reviewData) => {
 const sortReviews = async (placeId, sortValue, sortDirection) => {
   try {
     const reviews = await api.get(
-      `${placeId}/reviews?sortBy=${sortValue}&${sortDirection}`
+      `${placeId}/reviews?sortBy=${sortValue}&sortDirection=${sortDirection}`
     );
     ReviewsStore.setReviews(reviews.data);
     return reviews.data;

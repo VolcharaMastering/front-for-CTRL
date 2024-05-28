@@ -1,0 +1,13 @@
+@import "../../consts/block-mixins.scss";
+
+.sorting-pannel {
+    width: 100%;
+    height: 70px;
+    border-bottom: $borders-default;
+    .sorting-pannel__label {
+        @include input-text();
+    }
+    .sorting-pannel__sorters {
+        @include to-center_row($justify: space-between);
+    }
+}
