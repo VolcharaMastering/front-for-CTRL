@@ -4,19 +4,25 @@ import { deletePlace } from "../../api/places";
 import ButtonElement from "../../UI/ButtonElement/ButtonElement";
 import UserState from "../../stores/UserState";
 
-const DeletePopup= observer(({ placeId, placeName, lat, lng }) => {
-    console.log("placeId", placeId, placeName, lat, lng);
-    const handleDelete = () => {
-        console.log("placeid", placeId);
-        deletePlace(placeId);
-      };
-    return UserState.userData.logedIn ? (
+const DeletePopup = observer(({ placeId, placeName, lat, lng }) => {
+  console.log("placeId", placeId, placeName, lat, lng);
+  const handleDelete = () => {
+    console.log("placeid", placeId);
+    deletePlace(placeId);
+  };
+  return UserState.userData.logedIn ? (
     <div className="del-popup">
       <h2 className="subtitle">{placeName}</h2>
       <p className="del-popup__label">lat {lat}</p>
       <p className="del-popup__label">lng {lng}</p>
       <div className="del-popup__add-button">
-      <ButtonElement name="Delete place" action={handleDelete} size="small" />
+        {!(placeName === "DefaultCenter") && (
+          <ButtonElement
+            name="Delete place"
+            action={handleDelete}
+            size="small"
+          />
+        )}
       </div>
     </div>
   ) : (
@@ -26,5 +32,5 @@ const DeletePopup= observer(({ placeId, placeName, lat, lng }) => {
       <p className="del-popup__auth-message">Log in to delete place</p>
     </div>
   );
-})
+});
 export default DeletePopup;

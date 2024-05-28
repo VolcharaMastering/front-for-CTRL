@@ -1,12 +1,12 @@
 @import "../../consts/block-mixins.scss";
 
 .auth-form {
-    @include to-center_column();
-    width: 350px;
-    height: 500px;
-    border-radius: 10px;
-    background-color: $form-color;
-    @include normal-text();
+  @include to-center_column();
+  width: 350px;
+  height: 500px;
+  border-radius: 10px;
+  background-color: $form-color;
+  @include normal-text();
   .auth-form__input-block {
     position: relative;
     @include to-center_column();
@@ -22,12 +22,12 @@
       padding-left: 15px;
     }
     .auth-form__valid-message {
-        position: absolute;
-        top: 45px;
-        left: 20px;
-        @include warning-text();
+      position: absolute;
+      top: 45px;
+      left: 20px;
+      @include warning-text();
     }
-  } 
+  }
   .auth-form__button {
     padding: 20px;
   }

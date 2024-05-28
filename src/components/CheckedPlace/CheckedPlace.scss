@@ -1,0 +1,22 @@
+@import "../../consts/block-mixins.scss";
+
+.checked-place {
+  width: 100%;
+  height: fit-content;
+  @include to-center_column();
+  padding: 4%;
+  border-bottom: $borders-default;
+  .checked-place__text {
+    @include normal-text();
+    margin-top: 10px;
+  }
+  .checked-place__label {
+    @include normal-text($got-weight: 700);
+    margin-top: 15px;
+  }
+  .checked-place__service-buttons {
+    width: 100%;
+    @include to-center_row($justify: space-between);
+    margin-top: 15px;
+  }
+}

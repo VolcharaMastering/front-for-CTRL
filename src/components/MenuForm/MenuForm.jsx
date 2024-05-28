@@ -6,9 +6,15 @@ import PlacesStore from "../../stores/PlacesStore";
 import MenuCheckedState from "../../stores/MenuCheckedState";
 import "./MenuForm.scss";
 import SearchBar from "../../UI/SearchBar/SearchBar";
+import ButtonElement from "../../UI/ButtonElement/ButtonElement";
+import ChecketPlaceState from "../../stores/ChecketPlaceState";
+import CheckedPlace from "../CheckedPlace/CheckedPlace";
 
 const MenuForm = observer(() => {
-  
+  const CheckDetails = (place) => {
+    ChecketPlaceState.setCheckedPlase(place);
+    MenuCheckedState.setDetails();
+  }
     
   const handleOpenPopup = () => {
     PopupState.setOpened({
@@ -32,11 +38,14 @@ const MenuForm = observer(() => {
               (place.placeName && place.lat && place.lng) &&
             <li className="menu-form__places-item" key={place.id}>
               {place.placeName}
+              <ButtonElement name="Details" action={CheckDetails} data={place} size="micro" />
             </li>
           ))}
         </ul>
       )}
-      <form></form>
+      {MenuCheckedState.checked === "details" && (
+        <CheckedPlace />
+      )}
     </menu>
   ) : (
     <>

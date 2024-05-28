@@ -8,11 +8,11 @@ const SearchBar = observer(() => {
   const [searchString, setSearchString] = useState("");
 
   const handleSearch = () => {
-    if (searchString.length > 1) {
+    // if (searchString.length > 0) {
       if (MenuCheckedState.checked === "places") {
         findPlaces(searchString);
       }
-    }
+    // }
   };
   useEffect(() => {
     handleSearch();
@@ -35,7 +35,7 @@ const SearchBar = observer(() => {
         </>
       ) : (
         <>
-          <label htmlFor="search-bar__label">Search for details</label>
+          <label htmlFor="search-bar__label">Search for reviews</label>
           <input
             id="search-string"
             name="searchString"

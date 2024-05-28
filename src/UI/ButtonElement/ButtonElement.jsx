@@ -1,9 +1,12 @@
 import "./ButtonElement.scss";
 
-function ButtonElement({ name, action, size }) {
+function ButtonElement({ name, action, data, size }) {
     const handleClick = () => {
-      console.log("clicked");
+      if(data){
+        action(data);
+      }else{
         action();
+      }
     };
     return (
       <button className={`button ${size}`} onClick={handleClick} type="button">
