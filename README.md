@@ -1,7 +1,7 @@
 # Frontend for Test Task for CTRL+
 
-##Link to [backend][https://back-for-ctrl.onrender.com]
-##Link to [frontend][https://front-for-ctrl.onrender.com/]
+##Link to [backend](https://back-for-ctrl.onrender.com)  
+##Link to [frontend](https://front-for-ctrl.onrender.com/)  
 
 **Functionality:**  
 - User registration and authorization  
