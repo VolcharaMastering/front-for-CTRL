@@ -33,3 +33,25 @@ body {
     padding: 2% 10%;
   }
 }
+
+/* Основные стили для скроллбара */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 0px;
+}
+
+/* Фон трека (канал) скроллбара */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Ползунок скроллбара */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 1px;
+}
+
+/* Ползунок скроллбара при наведении */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
